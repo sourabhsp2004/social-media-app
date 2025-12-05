@@ -143,6 +143,18 @@ wheels = [
 ]
 
 [[package]]
+name = "bytez"
+version = "3.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a4/72/a15b05fa5656f5fd321bb66ecb80ba50300a1081f06c0bda09271deb9f7f/bytez-3.0.1.tar.gz", hash = "sha256:88e547eb074a051e8f6fbcb4d79d7af2d2c715245e872bbfa8dcdb205f406d7f", size = 6379, upload-time = "2025-11-20T21:40:00.596Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/94/ca/ac09c265e2fbcbee3bdb287f8fc34d296a00e61b7828a8a7f42e22bed656/bytez-3.0.1-py3-none-any.whl", hash = "sha256:aba0c0ded17719e9b285e1a2aad94e456aa5c0fa507046a52efa1305a6d8c196", size = 9738, upload-time = "2025-11-20T21:39:59.389Z" },
+]
+
+[[package]]
 name = "certifi"
 version = "2025.11.12"
 source = { registry = "https://pypi.org/simple" }
@@ -614,20 +626,24 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "aiosqlite" },
+    { name = "bytez" },
     { name = "fastapi" },
     { name = "fastapi-users", extra = ["sqlalchemy"] },
     { name = "imagekitio" },
     { name = "python-dotenv" },
+    { name = "requests" },
     { name = "uvicorn" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "aiosqlite", specifier = ">=0.21.0" },
+    { name = "bytez", specifier = ">=3.0.1" },
     { name = "fastapi", specifier = ">=0.121.3" },
     { name = "fastapi-users", extras = ["sqlalchemy"], specifier = ">=15.0.1" },
     { name = "imagekitio", specifier = ">=4.2.0" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
+    { name = "requests", specifier = ">=2.32.5" },
     { name = "uvicorn", extras = ["standerd"], specifier = ">=0.38.0" },
 ]
 

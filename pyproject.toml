@@ -6,9 +6,11 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "aiosqlite>=0.21.0",
+    "bytez>=3.0.1",
     "fastapi>=0.121.3",
     "fastapi-users[sqlalchemy]>=15.0.1",
     "imagekitio>=4.2.0",
     "python-dotenv>=1.2.1",
+    "requests>=2.32.5",
     "uvicorn[standerd]>=0.38.0",
 ]

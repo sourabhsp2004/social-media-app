@@ -18,6 +18,8 @@ class Base(DeclarativeBase):
 
 class User(SQLAlchemyBaseUserTableUUID, Base):
     posts = relationship("Post", back_populates="user")
+    comments = relationship("Comment", back_populates="user")
+    likes = relationship("Like", back_populates="user")
 
 
 class Post(Base):
@@ -32,6 +34,33 @@ class Post(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     user = relationship("User", back_populates="posts")
+    comments = relationship("Comment", back_populates="post", cascade="all, delete-orphan")
+    likes = relationship("Like", back_populates="post", cascade="all, delete-orphan")
+
+
+class Comment(Base):
+    __tablename__ = "comments"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("user.id"), nullable=False)
+    post_id = Column(UUID(as_uuid=True), ForeignKey("posts.id"), nullable=False)
+    content = Column(Text, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    user = relationship("User", back_populates="comments")
+    post = relationship("Post", back_populates="comments")
+
+
+class Like(Base):
+    __tablename__ = "likes"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("user.id"), nullable=False)
+    post_id = Column(UUID(as_uuid=True), ForeignKey("posts.id"), nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    user = relationship("User", back_populates="likes")
+    post = relationship("Post", back_populates="likes")
 
 
 engine = create_async_engine(DATABASE_URL)

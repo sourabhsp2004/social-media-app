@@ -18,3 +18,25 @@ class UserCreate(schemas.BaseUserCreate):
 
 class UserUpdate(schemas.BaseUserUpdate):
     pass
+
+
+class CommentCreate(BaseModel):
+    content: str
+
+
+class CommentResponse(BaseModel):
+    id: uuid.UUID
+    user_id: uuid.UUID
+    post_id: uuid.UUID
+    content: str
+    created_at: str  # We'll convert datetime to string in the endpoint or use Config
+
+
+class LikeCreate(BaseModel):
+    pass  # No body needed for like toggle
+
+
+class LikeResponse(BaseModel):
+    id: uuid.UUID
+    user_id: uuid.UUID
+    post_id: uuid.UUID
